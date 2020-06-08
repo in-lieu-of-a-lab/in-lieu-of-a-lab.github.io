@@ -27,52 +27,23 @@
 }
 
 body {
-  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
 }
 .header {
-  padding: 60px; /* some padding */
+  padding: 30px; /* some padding */
   text-align: center; /* center the text */
-  background: #14d41d7c; /* green background */
+  background: #14d41d7c; /* green background
+  /*background-image: url('header_background.jpg');*/
   background-size: cover;
-  position: relative;
-}
-
-.header:before {
-  content: ' ';
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  opacity: 0.4;
-  background-image: url('header_background.jpg');
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
+  /*opacity: 0.5;*/
 }
 
 /* Increase the font size of the <h1> element */
 .header h1 {
   font-size: 40px;
-  color: 333;
-  font-weight: 900;
-  font-family: OxygenB, 'Open Sans', sans-serif;
-  z-index: 2;
-  position: relative;
+  color: #333; 
+  font-family: OxygenB, 'Trebuchet MS', sans-serif;
 }
-
-.header p {
-  z-index: 2;
-  position: relative;
-  font-family: QuicksandS, Helvetica, sans-serif;
-}
-
 /* Style the top navigation bar */
 .navbar {
   overflow: hidden; /* Hide overflow */
@@ -87,7 +58,6 @@ body {
   text-align: center; /* Center the text */
   padding: 14px 20px; /* Add some padding */
   text-decoration: none; /* Remove underline */
-  font-family: OxygenR, 'Open Sans', sans-serif;
 }
 
 /* Right-aligned link */
@@ -98,7 +68,7 @@ body {
 /* Change color on hover/mouse-over */
 .navbar a:hover {
   background-color: rgb(58, 150, 255); /* Grey background color */
-  color: #333; /* Black text color */
+  color: black; /* Black text color */
 }
 
 /* Ensure proper sizing */
@@ -118,7 +88,7 @@ body {
   flex: 30%; /* Set the width of the sidebar */
   background-color: #f1f1f1; /* Grey background color */
   padding: 20px; /* Some padding */
-  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
 }
 
 /* Main column */
@@ -126,13 +96,6 @@ body {
   flex: 70%; /* Set the width of the main content */
   background-color: white; /* White background color */
   padding: 20px; /* Some padding */
-}
-
-.main h2 {
-  font-size: 30px;
-  color: rgb(58, 150, 255);
-  font-weight: 900;
-  font-family: OxygenR, 'Open Sans', sans-serif;
 }
 
 .main a {
@@ -148,29 +111,14 @@ body {
   color: #333; 
 }
 
-.main h3 {
-  font-size: 20px;
-  color: #14d41d7c;
-  font-weight: 700;
-  font-family: OxygenR, 'Open Sans', sans-serif;
-  font-style: italic
-}
-
-.main h5 {
-  font-size: 15px;
-  color: #333;
-  font-weight: 700;
-  font-family: OxygenB, 'Open Sans', sans-serif;
-}
-
-.main p {
-  font-family: QuicksandR, Helvetica, sans-serif;
-}
-
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
   .row { 
     flex-direction: column;
+  }
+  .column {
+    width: 100%;
+    display: block;
   }
 }
 
@@ -186,7 +134,56 @@ body {
   padding: 20px; /* Some padding */
   text-align: center; /* Center text*/
   background: #ddd; /* Grey background */
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container h2 {
+  font-size: 25px;
+  color: rgb(58, 150, 255);
+  font-weight: 900;
   font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+.container h5 {
+  font-size: 13px;
+  color: #333;
+  font-weight: 700;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+}
+
+.container p {
+  font-family: QuicksandR, Helvetica, sans-serif;
+  color: #333;
 }
 
 </style>
@@ -195,25 +192,28 @@ body {
 
     <div class="header">
         <h1>In Lieu of A Lab</h1>
-        <p>Science at home... because curiosity has no materials list.</p>
       </div>
 
     <div class="navbar">
-        <strong><a href="#">Home</a></strong>
-        <a href="/categories/chemistry/chemistry.html">Chemistry</a>
+        <a href="/index.html">Home</a>
+        <strong><a href="#">Chemistry</a></strong>
         <a href="#">Link</a>
         <a href="#" class="right">Link</a>
       </div>
 
     <div class="row">
-        <div class="side">this is a test</div>
+        <div class="side">...</div>
         <div class="main">
-          <h3>Featured Posts</h3>
-          <h2><a href="/categories/chemistry/breaking-the-water-molecule/breaking-the-water-molecule.html" target="_blank">Breaking the Water Molecule: Electrolysis</a></h2>
-          <h5>2020-06-20</h5>
-          <div class="fakeimg" style="height:200px;">Image</div>
-          <p>Use a simple homemade device to split a water molecule into two gases.</p>
-          <br>
+          <div class="column">
+            <div class="card">
+              <img src="/w3images/team2.jpg" alt="Mike" style="width:100%">
+              <div class="container">
+                <h2><a href="/categories/chemistry/breaking-the-water-molecule/breaking-the-water-molecule.html" target="_blank">Breaking the Water Molecule: Electrolysis</a></h2>
+                <h5>2020-06-20</h5>
+                <p>Use a simple homemade device to split a water molecule into two gases.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
