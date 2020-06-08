@@ -31,20 +31,43 @@ body {
   font-family: OxygenR, 'Open Sans', sans-serif;
 }
 .header {
-  padding: 30px; /* some padding */
+  padding: 60px; /* some padding */
   text-align: center; /* center the text */
-  background: #14d41d7c; /* green background
-  /*background-image: url('header_background.jpg');*/
+  background: #14d41d7c; /* green background */
   background-size: cover;
-  /*opacity: 0.5;*/
+  position: relative;
+}
+
+.header:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url('/images/header_background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 
 /* Increase the font size of the <h1> element */
 .header h1 {
   font-size: 40px;
-  color: #333; 
+  color: #333;
+  font-weight: 900;
   font-family: OxygenB, 'Open Sans', sans-serif;
+  z-index: 2;
+  position: relative;
 }
+
 /* Style the top navigation bar */
 .navbar {
   overflow: hidden; /* Hide overflow */
@@ -235,7 +258,7 @@ body {
 
     <div class="row">
         <div class="main">
-          <img src="/categories/chemistry/breaking-the-water-molecule/banner.PNG" alt="Electrolysis in action" style="height:50%">
+          <img src="/categories/chemistry/breaking-the-water-molecule/banner.PNG" alt="Electrolysis in action" style="height:300px">
           <h2>Breaking the Water Molecule: Electrolysis</h2>
           <h5>2020-06-20</h5>
           <br>
