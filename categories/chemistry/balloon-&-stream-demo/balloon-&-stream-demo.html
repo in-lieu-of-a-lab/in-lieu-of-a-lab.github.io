@@ -243,10 +243,6 @@ body {
     var popup = document.getElementById("popup3");
     popup.classList.toggle("show");
   }
-  function popup4f() {
-    var popup = document.getElementById("popup4");
-    popup.classList.toggle("show");
-  }
   </script>
 
 </head>
@@ -271,9 +267,10 @@ body {
 
     <div class="row">
         <div class="main">
-          <img src="/categories/chemistry/balloon-&-stream-demo/banner.PNG" alt="Balloon & stream" style="height:300px">
           <h2>Balloon & Stream Demo</h2>
           <h5>2020-06-20</h5>
+          <br>
+          <img src="/categories/chemistry/balloon-&-stream-demo/banner.PNG" alt="Balloon & stream" style="height:300px">
           <br>
           <h4>Bend water with a charged balloon.</h4>
           <br>
@@ -286,7 +283,11 @@ body {
           <br>
           <h3>What you'll need:</h3>
           <ul>
-            <li>Plastic cup or container</li>
+            <li>Plastic cup or container
+              <span class="popup" onclick="popup1f()"><sup><b>&#9650;</b></sup>
+                <span class="popuptext" id="popup1">Those 16 oz cylindrical takeout containers work well.</span>
+               </span>
+            </li>
             <li>Safety pin</li>
             <li>Water</li>
             <li>Balloon</li>
@@ -301,53 +302,50 @@ body {
             <br>
             <li>Fill the stream cup with water and make sure a thin, straight stream issues from the bottom.</li>
             <br>
-            <li>Blow up the balloon and rub it on a carpet to build up a charge.</li>
+            <li>Blow up the balloon and rub it on a carpet 
+              <span class="popup" onclick="popup1f()"><sup><b>&#9650;</b></sup>
+                <span class="popuptext" id="popup1">Or someone's head :)</span>
+               </span>
+              to build up a charge.</li>
             <li>Hold the balloon next to the stream coming from the stream cup and watch as the water bends towards it.</li>
           </ol>
           <br>
           <h3>How it works:</h3>
-          <p>Water (H<sub>2</sub>O) is made of two hydrogen atoms and an oxygen. The hydrogen atoms have a <i>positive charge</i> and the oxygen atoms have a <i>negative charge</i>.
-            <span class="popup" onclick="popup1f()"><sup><b>&#9650;</b></sup>
-                <span class="popuptext" id="popup1">See minipost on polarity for a description of how this works.</span>
-            </span>
+          <p>To understand how the balloon bends the water, you need to know three things.
             <br>
-            <br>
-            It turns out that if you run electricity through water, you can break the liquid water molecule into its two gases, hydrogen (H) and oxygen (O).
-            <br>
-            <br>
-            We know that opposite charges attract.
-            <span class="popup" onclick="popup2f()"><sup><b>&#9650;</b></sup>
-              <span class="popuptext" id="popup2">Check out the Balloon & Stream Demo for an exploration of opposite charges.</span>
-            </span>
-            Since batteries have a positive and negative terminal,
+            <b>1. Water (H<sub>2</sub>O) is a <i>polar</i> molecule.</b> This means that it has one negative end (or pole) and one positive end (or pole). A water molecule is made of three atoms: two hydrogen and one oxygen. The negative side is the oxygen and the positive side is the hydrogen. 
             <span class="popup" onclick="popup3f()"><sup><b>&#9650;</b></sup>
-              <span class="popuptext" id="popup3">Look for a + on one side of your battery to know which is positive.</span>
-            </span>
-            the positive hydrogen is drawn to the negative terminal and the negative oxygen is drawn to the positive terminal.
-            <span class="popup" onclick="popup4f()"><sup><b>&#9650;</b></sup>
-              <span class="popuptext" id="popup4">The oxygen is actually still attached to one of the hydrogens in a negative compound called hydroxide <br> (OH<sup>-</sup>).</span>
+                <span class="popuptext" id="popup3">To learn why this is the case, visit the minipost on polarity.</span>
             </span>
             <br>
             <br>
-            <img src="/categories/chemistry/breaking-the-water-molecule/splitting.png#" alt="Water molecule splitting" style="width:30%;height:30%;">
+            <img src="/categories/chemistry/balloon-&-stream-demo/watermolcharged.png#" alt="Water is a polar molecule" style="width:30%;height:30%;">
             <br>
             <br>
-            Let’s look at one side at a time to explain what’s happening. We’ll start with the negative battery terminal.
+            <b>2. Atoms contain tiny negative particles called <i>electrons</i>.</b> More electrons make something more negative.
             <br>
             <br>
-            <img src="/categories/chemistry/breaking-the-water-molecule/H2.png#" alt="Hydrogen at the negative battery terminal" style="width:30%;height:30%;">
+            <img src="/categories/chemistry/balloon-&-stream-demo/atomselectrons.png#" alt="Atoms contain negative electrons" style="width:30%;height:30%;">
             <br>
             <br>
-            The hydrogen bonds together as H<sub>2</sub>, otherwise known as hydrogen gas. You’ll see small bubbles forming around the terminal - these are bubbles of hydrogen gas. Let’s see what’s happening at the positive terminal:
+            <b>3. Opposite charges attract.</b> When a positive and a negative charge get close to each other, they will be drawn together like magnets.
             <br>
             <br>
-            <img src="/categories/chemistry/breaking-the-water-molecule/O2.png#" alt="Oxygen at the positive battery terminal" style="width:30%;height:30%;">
+            <img src="/categories/chemistry/balloon-&-stream-demo/chargesattract.png#" alt="Opposite charges attract" style="width:30%;height:30%;">
             <br>
             <br>
-            The oxygen in the hydroxide (OH<sup>-</sup>) breaks off and bonds together as O<sub>2</sub>, otherwise known as oxygen gas (this is the stuff we breathe). You’ll see some small bubbles forming around the terminal - these are bubbles of oxygen gas. There are roughly half as many oxygen bubbles as hydrogen bubbles; remember that water is one part oxygen and two parts hydrogen.
+            So what does this all have to do with the balloon? When you rub the balloon on a rug, some of the electrons on the rug are picked up by the balloon. Picture electrons as a layer of dust covering the rug. When you disturb this layer, the balloon will get dusty.
             <br>
             <br>
-            One last thing. Epsom salts, like all salts, conduct electricity really well. This helps the electricity from the battery move through the solution more quickly. The reason we can’t use table salt is because when you run an electric current through a salt, it breaks it up. Epsom salt splits into magnesium and sulfate, which are fairly harmless, but table salt (sodium chloride) would split into sodium and poisonous chlorine gas.
+            <img src="/categories/chemistry/balloon-&-stream-demo/balloonelectrons.png#" alt="Balloon picks up electrons" style="width:30%;height:30%;">
+            <br>
+            <br>
+            Now you have a negatively charged balloon and a stream of water molecules with positive and negative ends. When you hold the negative balloon next to the water, the water molecules flip so that their positive sides (hydrogen) are facing the balloon. The water molecules are then pulled toward the balloon because the positive hydrogen sides are attracted to the negative electrons on the balloon.
+            <br>
+            <br>
+            <img src="/categories/chemistry/balloon-&-stream-demo/balloonstream.png#" alt="Balloon bends the stream of water" style="width:30%;height:30%;">
+            <br>
+            <br>
           </p>
           <br>
         </div>
