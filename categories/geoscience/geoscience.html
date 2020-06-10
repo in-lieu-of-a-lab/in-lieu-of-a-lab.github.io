@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>In Lieu of A Lab</title>
+<link rel="icon" href="/images/icon.png" type="image/png" sizes="16x16">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face {
+  font-family: OxygenR;
+  src: url("/fonts/Oxygen/Oxygen-Regular.ttf#");
+}
+@font-face {
+  font-family: OxygenB;
+  src: url("/fonts/Oxygen/Oxygen-Bold.ttf#");
+}
+@font-face {
+  font-family: QuicksandR;
+  src: url("/fonts/Quicksand/static/Quicksand-Regular.ttf#");
+}
+@font-face {
+  font-family: QuicksandM;
+  src: url("/fonts/Quicksand/static/Quicksand-Medium.ttf#");
+}
+@font-face {
+  font-family: QuicksandS;
+  src: url("/fonts/Quicksand/static/Quicksand-SemiBold.ttf#");
+}
+
+body {
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
+}
+.header {
+  padding: 30px; /* some padding */
+  text-align: center; /* center the text */
+  background: #14d41d7c; /* green background */
+  background-size: cover;
+  position: relative;
+}
+
+.header:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url('/images/header_background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+  font-size: 40px;
+  color: #333;
+  font-weight: 900;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+  z-index: 2;
+  position: relative;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background-color: #333; /* Dark background color */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: rgb(58, 150, 255); /* Grey background color */
+  color: black; /* Black text color */
+}
+
+/* Ensure proper sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%; /* Set the width of the sidebar */
+  background-color: #f1f1f1; /* Grey background color */
+  padding: 20px; /* Some padding */
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
+}
+
+/* Main column */
+.main { 
+  flex: 70%; /* Set the width of the main content */
+  background-color: white; /* White background color */
+  padding: 20px; /* Some padding */
+}
+
+.main a {
+  text-decoration: none; /* Remove underline */
+}
+
+.main a:visited {
+  text-decoration:none;
+  color: rgb(58, 150, 255); 
+}
+
+.main a:hover {
+  color: #333; 
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row { 
+    flex-direction: column;
+  }
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background: #ddd; /* Grey background */
+  
+}
+
+.footer h3 {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.container h2 {
+  font-size: 25px;
+  color: rgb(58, 150, 255);
+  font-weight: 900;
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+.container h5 {
+  font-size: 13px;
+  color: #333;
+  font-weight: 700;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+}
+
+.container p {
+  font-family: QuicksandR, Helvetica, sans-serif;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>In Lieu of A Lab</h1>
+      </div>
+
+    <div class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/categories/biology/biology.html">Biology</a>
+        <a href="/categories/chemistry/chemistry.html">Chemistry</a>
+        <strong><a href="#">Geoscience</a></strong>
+        <a href="/categories/miniposts/miniposts.html">Miniposts</a>
+        <a href="/categories/blog/blog.html">Blog</a>
+        <a href="/categories/toolbox/toolbox.html">Toolbox</a>
+        <a href="/categories/citsci/citsci.html">Citizen Science</a>
+        <a href="/categories/resources/resources.html">Resources</a>
+        <a href="/about.html" class="right">About</a>
+      </div>
+
+    <div class="row">
+        <div class="side">...</div>
+        <div class="main">
+          <div class="column">
+            <div class="card">
+              <img src="/categories/chemistry/breaking-the-water-molecule/thumbnail.PNG" alt="Electrolysis in action" style="width:100%">
+              <div class="container">
+                <h2><a href="/categories/chemistry/breaking-the-water-molecule/breaking-the-water-molecule.html" target="_blank">Breaking the Water Molecule: Electrolysis</a></h2>
+                <h5>2020-06-20</h5>
+                <p>Use a simple homemade device to split a water molecule into two gases.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="footer">
+        <h2><h3>&copy; Copyright 2020, In Lieu of a Lab</h3></h2>
+      </div>
+
+</body>
+</html>
