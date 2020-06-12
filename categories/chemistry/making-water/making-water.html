@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>In Lieu of A Lab</title>
+<link rel="icon" href="/images/icon.png" type="image/png" sizes="16x16">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face {
+  font-family: OxygenR;
+  src: url("/fonts/Oxygen/Oxygen-Regular.ttf#");
+}
+@font-face {
+  font-family: OxygenB;
+  src: url("/fonts/Oxygen/Oxygen-Bold.ttf#");
+}
+@font-face {
+  font-family: QuicksandR;
+  src: url("/fonts/Quicksand/static/Quicksand-Regular.ttf#");
+}
+@font-face {
+  font-family: QuicksandM;
+  src: url("/fonts/Quicksand/static/Quicksand-Medium.ttf#");
+}
+@font-face {
+  font-family: QuicksandS;
+  src: url("/fonts/Quicksand/static/Quicksand-SemiBold.ttf#");
+}
+
+body {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+.header {
+  padding: 30px; /* some padding */
+  text-align: center; /* center the text */
+  background: #14d41d7c; /* green background */
+  background-size: cover;
+  position: relative;
+}
+
+.header:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url('/images/header_background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+  font-size: 40px;
+  color: #333;
+  font-weight: 900;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+  z-index: 2;
+  position: relative;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background-color: #333; /* Dark background color */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: rgb(58, 150, 255); /* Grey background color */
+  color: black; /* Black text color */
+}
+
+/* Ensure proper sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main { 
+  background-color: white; /* White background color */
+  padding: 20px; /* Some padding */
+}
+
+.main h2 {
+  font-size: 30px;
+  color: rgb(58, 150, 255);
+  font-weight: 900;
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+.main h3 {
+  font-family: QuicksandS, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.main h4 {
+  font-family: QuicksandR, Helvetica, sans-serif;
+  font-style: italic;
+}
+
+.main h5 {
+  font-size: 15px;
+  color: #333;
+  font-weight: 700;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+}
+
+.main h6 {
+  font-size: 16px;
+  color: rgb(211, 0, 0);
+  font-weight: 900;
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+.main p {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+.main li {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row { 
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background: #ddd; /* Grey background */
+  
+}
+
+.footer h3 {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #14d41d7c;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #19ee24;
+  color: #333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  /*-webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s*/
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+</style>
+
+<script>
+  // When the user clicks on <div>, open the popup
+  function popup1f() {
+    var popup = document.getElementById("popup1");
+    popup.classList.toggle("show");
+  }
+  function popup2f() {
+    var popup = document.getElementById("popup2");
+    popup.classList.toggle("show");
+  }
+  function popup3f() {
+    var popup = document.getElementById("popup3");
+    popup.classList.toggle("show");
+  }
+  </script>
+
+</head>
+<body>
+
+    <div class="header">
+        <h1>In Lieu of A Lab</h1>
+      </div>
+
+    <div class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/categories/biology/biology.html">Biology</a>
+        <strong><a href="/categories/chemistry/chemistry.html">Chemistry</a></strong>
+        <a href="/categories/geoscience/geoscience.html">Geoscience</a>
+        <a href="/categories/miniposts/miniposts.html">Miniposts</a>
+        <a href="/categories/blog/blog.html">Blog</a>
+        <a href="/categories/toolbox/toolbox.html">Toolbox</a>
+        <a href="/categories/citsci/citsci.html">Citizen Science</a>
+        <a href="/categories/resources/resources.html">Resources</a>
+        <a href="/about.html" class="right">About</a>
+      </div>
+
+    <div class="row">
+        <div class="main">
+          <h2>Making Water in a Bottle Rocket</h2>
+          <h5>2020-06-20</h5>
+          <br>
+          <img src="/categories/chemistry/making-water/banner.png" alt="Water-making bottle rocket" style="height:300px">
+          <br>
+          <h4>Produce water out of thin air (and make a rocket in the process!)</h4>
+          <br>
+          <h3>Questions to explore:</h3>
+          <ul>
+            <li>How can we combine gases into a liquid?</li>
+            <li>What is water made of?</li>
+            <li>What is a combustion reaction?</li>
+            <li>How do we prove that something is water?</li>
+          </ul>
+          <br>
+          <p>IMPORTANT: This bottle rocket involves explosions and matches. Safety is the number one priority. You can make this experiment really fun and safe if you are thoughtful about it: make sure to <b>read and follow the safety notes below</b> BEFORE trying the experiment.</p>
+          <br>
+          <h3>What you'll need:</h3>
+          <ul>
+            <li>500 mL plastic bottle</li>
+            <li>Drill or something that can poke a hole through plastic</li>
+            <li>Syringe with mL markings</li>
+            <li>Water</li>
+            <li>Rubbing alcohol (70-90%)</li>
+            <li>Small bowl for pouring alcohol out</li>
+            <li>Scale with grams</li>
+            <li>Small cup to put on scale</li>
+            <li>Pencil & paper</li>
+            <li>Matches</li>
+            <li>Dowel/meter stick/other ~3 ft long stick</li>
+            <li>Tape</li>
+            <li>Safety goggles</li>
+            <li>Watering can or hose</li>
+          </ul>
+          <br>
+          <h3>What to do:</h3>
+          <br>
+          <p>Density is a measurement that can help us identify liquids because most liquids have different densities. Let’s find the density of water and alcohol. To start, make a table like the one below. </p>
+          <br>
+          <br>
+          <img src="/categories/chemistry/making-water/table.png#" alt="Data table" style="width:30%;height:30%;">
+          <br>
+          <br>
+          <p>Then, follow these steps:</p>
+          <ol>
+            <li>Place the small cup on the scale and tare it (make sure the measurement reads zero).</li>
+            <br>
+            <li>Use the syringe to add 10 mL of water to the cup.</li>
+            <br>
+            <li>Record the mass of the water in the table.</li>
+            <br>
+            <li>Density is calculated by dividing the mass of something by its volume. Divide the mass you just recorded by 10 (the volume of water you added).</li>
+            <br>
+            <li>Pour out the water and repeat steps 2-4 for rubbing alcohol (leave the last row blank for now).</li>
+          </ol>
+          <br>
+          <p>Now to make your bottle rocket:</p>
+          <ol>
+            <li>Drill a small hole in the cap of the plastic bottle.</li>
+            <br>
+            <br>
+            <img src="/categories/chemistry/making-water/cap.png#" alt="Bottle cap opening" style="width:30%;height:30%;">
+            <br>
+            <br>
+            <li>Use the syringe to put 5 mL of alcohol into the bottle. Screw the cap on and place a piece of tape over the hole.</li>
+            <br>
+            <li>Tape a match to the end of the stick.</li>
+            <br>
+            <br>
+            <img src="/categories/chemistry/making-water/match.png#" alt="Match on stick" style="width:30%;height:30%;">
+            <br>
+            <br>
+            <li>With one finger holding down the tape over the cap of the bottle, shake it vigorously for at least 100 seconds.</li>
+            <br>
+            <li>The next step is a two person job:</li>
+            <ol style="list-style-type: lower-alpha; padding-bottom: 0;">
+              <br>
+              <li style="margin-left:2em">One person should unscrew the cap, pour any excess liquid alcohol into a bowl, screw the cap back on, pull off the tape over the hole, and place the bottle horizontally on the ground.</li>
+              <br>
+              <li style="margin-left:2em; padding-bottom: 0;">The second person should light the match at the end of the stick and be ready to act from a distance <b>as soon as the first person is safely out of the way</b>.</li>
+             </ol>
+             <br>
+             <li>Hold the match (at the end of the stick) right next to the hole in the bottle cap. If nothing happens after 5 seconds, extinguish the match and start over.</li>
+             <br>
+             <li>
+               After the bottle “wooshes” out, go and pick it up (with caution, it might still be warm). Swirl it vertically until you see liquid condensing on the bottom.
+              <span class="popup" onclick="popup1f()"><sup><b>&#9650;</b></sup>
+                <span class="popuptext" id="popup1">The liquid you created starts as vapor.</span>
+              </span>
+             </li>
+             <br>
+             <li>
+               Try to prove that this liquid is water: go inside and measure its density by filling in the last row of your chart.
+               <span class="popup" onclick="popup2f()"><sup><b>&#9650;</b></sup>
+                  <span class="popuptext" id="popup2">Remember that density = mass/volume</span>
+                </span>
+              If all went according to plan, the density should be closer to that of water than alcohol.
+              </li>
+          </ol>
+          <br>
+          <h6>SAFETY NOTES:</h6>
+          <br>
+          <ul>
+            <li>Wear <b>safety goggles</b>.</li>
+            <li>Do this experiment <b>outside</b>, preferably on concrete. Avoid dry brush.</li>
+            <li>The bottle should shoot straight out away from the match for 3-6 meters. <b>Don’t stand in front of it</b> or have anything flammable in its path.</li>
+            <li>Have a <b>full watering can or hose nearby</b> in case anything ignites.</li>
+            <li>This is an explosion, <b>not a fire</b>. If you see a slow flame inside the bottle, hose it off and try again. This means you didn’t pour out all the liquid alcohol and/or didn’t shake the bottle enough.</li>
+            <li>Always <b>rinse a match in water</b> before disposing of it.</li>
+            <li>Make sure an <b>adult</b> knows what you’re doing and invite them to join you.</li>
+          </ul>
+          <br>
+          <br>
+          <img src="/categories/chemistry/making-water/safetygoggles.png##" alt="Wear safety goggles during explosions" style="width:30%;height:30%;">
+          <br>
+          <br>
+          <h3>How it works:</h3>
+          <p>
+            Making any compound is just like a recipe. You need ingredients and a way to combine them. If you’re making cookies, you need flour, sugar, butter, etc and a whisk to mix it all together. If you’re making water, you need oxygen, hydrogen, and a lot of fast heat to get the two to fuse together (a.k.a. an explosion). Remember that a water molecule is made up of three atoms: two hydrogen and one oxygen.
+            <br>
+            <br>
+            <img src="/categories/chemistry/making-water/watermol.png##" alt="A water molecule" style="width:30%;height:30%;">
+            <br>
+            <br>
+            The oxygen is pretty easy. There’s plenty in our air that we breathe all the time. Our atmosphere is around 21% oxygen.
+            <br>
+            The hydrogen we’ll get from a hydrocarbon (as the name implies, a compound with hydrogen and carbon). Alcohols are partly made from hydrocarbons, so they have plenty of hydrogen in them. Isopropyl alcohol has the chemical formula C<sub>3</sub>H<sub>8</sub>O.
+            <br>
+            <br>
+            <img src="/categories/chemistry/making-water/isoalcoholmol.png##" alt="A molecule of isopropyl (rubbing) alcohol" style="width:30%;height:30%;">
+            <br>
+            <br>
+            We’ll need a <i>combustion</i> reaction to fuse them together. Combustion is the scientific way of saying burning. Combustion reactions take oxygen and some hydrocarbon fuel, ignite them, and produce water and carbon dioxide.
+            <br>
+            <br>
+            <img src="/categories/chemistry/making-water/combustion.png##" alt="Oxygen and alcohol combust to form water" style="width:30%;height:30%;">
+            <br>
+            <br>
+            If we were to light liquid alcohol on fire, it would still be a combustion reaction and produce water, but it would happen too slowly and melt the plastic of the bottle. Plus, no explosion and bottle rocket. So we shake the bottle to vaporize
+            <span class="popup" onclick="popup3f()"><sup><b>&#9650;</b></sup>
+              <span class="popuptext" id="popup3"><i>Vaporize</i> means to turn into a gas.</span>
+            </span>
+            the alcohol. When you pour out the excess alcohol liquid, there is still alcohol <i>vapor</i> in the bottle.
+            <br>
+            <br>
+            <img src="/categories/chemistry/making-water/bottlerocket.png##" alt="Expanding vapor propels the bottle rocket forward" style="width:30%;height:30%;">
+            <br>
+            <br>
+            When you hold a match up to the opening, the vapor ignites pretty quickly. The gas inside the bottle heats up and expands. With nowhere to go except out the hole in the cap, the air shooting out the back forces the bottle forward. Inside, the alcohol and oxygen combust to form water vapor. As you swirl the warm bottle, that vapor cools down and condenses into liquid water.
+          </p>
+          <br>
+        </div>
+      </div>
+
+    <div class="footer">
+        <h2><h3>&copy; Copyright 2020, In Lieu of a Lab</h3></h2>
+      </div>
+
+</body>
+</html>
