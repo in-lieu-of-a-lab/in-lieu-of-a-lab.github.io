@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>In Lieu of A Lab</title>
+<link rel="icon" href="/images/icon.png" type="image/png" sizes="16x16">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face {
+  font-family: OxygenR;
+  src: url("/fonts/Oxygen/Oxygen-Regular.ttf#");
+}
+@font-face {
+  font-family: OxygenB;
+  src: url("/fonts/Oxygen/Oxygen-Bold.ttf#");
+}
+@font-face {
+  font-family: QuicksandR;
+  src: url("/fonts/Quicksand/static/Quicksand-Regular.ttf#");
+}
+@font-face {
+  font-family: QuicksandM;
+  src: url("/fonts/Quicksand/static/Quicksand-Medium.ttf#");
+}
+@font-face {
+  font-family: QuicksandS;
+  src: url("/fonts/Quicksand/static/Quicksand-SemiBold.ttf#");
+}
+
+body {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+.header {
+  padding: 30px; /* some padding */
+  text-align: center; /* center the text */
+  background: #14d41d7c; /* green background */
+  background-size: cover;
+  position: relative;
+}
+
+.header:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url('/images/header_background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+  font-size: 40px;
+  color: #333;
+  font-weight: 900;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+  z-index: 2;
+  position: relative;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background-color: #333; /* Dark background color */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: rgb(58, 150, 255); /* Grey background color */
+  color: black; /* Black text color */
+}
+
+/* Ensure proper sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main { 
+  background-color: white; /* White background color */
+  padding: 20px; /* Some padding */
+}
+
+.main h2 {
+  font-size: 30px;
+  color: rgb(58, 150, 255);
+  font-weight: 900;
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+.main h3 {
+  font-family: QuicksandS, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+.main h4 {
+  font-family: QuicksandR, Helvetica, sans-serif;
+  font-style: italic;
+}
+
+.main h5 {
+  font-size: 15px;
+  color: #333;
+  font-weight: 700;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+}
+
+.main h6 {
+  font-size: 16px;
+  color: rgb(211, 0, 0);
+  font-weight: 900;
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+.main p {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+.main li {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row { 
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background: #ddd; /* Grey background */
+  
+}
+
+.footer h3 {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #14d41d7c;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #19ee24;
+  color: #333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  /*-webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s*/
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+</style>
+
+<script>
+  // When the user clicks on <div>, open the popup
+  function popup1f() {
+    var popup = document.getElementById("popup1");
+    popup.classList.toggle("show");
+  }
+  </script>
+
+</head>
+<body>
+
+    <div class="header">
+        <h1>In Lieu of A Lab</h1>
+      </div>
+
+    <div class="navbar">
+        <a href="/index.html">Home</a>
+        <strong><a href="/categories/biology/biology.html">Biology</a></strong>
+        <a href="/categories/chemistry/chemistry.html">Chemistry</a>
+        <a href="/categories/geoscience/geoscience.html">Geoscience</a>
+        <a href="/categories/miniposts/miniposts.html">Miniposts</a>
+        <a href="/categories/blog/blog.html">Blog</a>
+        <a href="/categories/toolbox/toolbox.html">Toolbox</a>
+        <a href="/categories/citsci/citsci.html">Citizen Science</a>
+        <a href="/categories/resources/resources.html">Resources</a>
+        <a href="/about.html" class="right">About</a>
+      </div>
+
+    <div class="row">
+        <div class="main">
+          <h2>Gummy Bear Osmosis</h2>
+          <h5>2020-06-20</h5>
+          <br>
+          <img src="/categories/biology/gummy-bear-osmosis/banner.png" alt="Gummy bear in solution" style="height:300px">
+          <br>
+          <h4>Model water’s movement within our cells using gummy candy.</h4>
+          <br>
+          <h3>Questions to explore:</h3>
+          <ul>
+            <li>How does water travel?</li>
+            <li>Can water pass through seemingly-solid surfaces?</li>
+          </ul>
+          <br>
+          <h3>What you'll need:</h3>
+          <ul>
+            <li>
+              2-4 gummy bears
+              <span class="popup" onclick="popup1f()"><sup><b>&#9650;</b></sup>
+                <span class="popuptext" id="popup1">More if you want to eat some!</span>
+              </span>
+            </li>
+            <li>2-4 small bowls/containers</li>
+            <li>Masking tape</li>
+            <li>Marker</li>
+            <li>Scale</li>
+            <li>Measuring cup</li>
+            <li>Tablespoon measure</li>
+            <li>Spoon</li>
+            <li>Tap water</li>
+            <li>Salt</li>
+            <li>Distilled water (optional)</li>
+            <li>Corn syrup (optional)</li>
+          </ul>
+          <br>
+          <h3>What to do:</h3>
+          <ol>
+            <li>Put 100 mL of tap water in each of two small bowls. Use the masking tape and marker to label one bowl “control” and the other “salt.”</li>
+            <br>
+            <li>Add a tablespoon of salt to the bowl labelled “salt”. Mix until dissolved.</li>
+            <br>
+            <li>If you have distilled water, label another bowl “distilled” and add 100 mL of distilled water.</li>
+            <br>
+            <li>If you have corn syrup, label another bowl “syrup” and add 100 mL of corn syrup.</li>
+            <br>
+            <li>Use the scale to weigh a gummy bear. Record its mass in grams.</li>
+            <br>
+            <br>
+            <img src="/categories/biology/gummy-bear-osmosis/scale.png#" alt="Massing the gummy bear" style="width:30%;height:30%;">
+            <br>
+            <br>
+            <li>Place a gummy bear in each bowl. Try to fully submerge them.</li>
+            <br>
+            <li>Wait at least 24 hours.</li>
+            <br>
+            <li>Spoon the gummy bears out of the solutions and weigh them again. What do you notice? Did the masses change? What did different solutions do to the gummy bears?</li>
+          </ol>
+          <br>
+          <h3>How it works:</h3>
+          <p>
+            <i>Osmosis</i> is the movement of <b>water</b> across a <b>membrane</b> from an area of <b>low concentration</b> to an area of <b>high concentration</b>. Let’s break this definition down.
+            <br>
+            First of all, osmosis is the movement of <b>water</b>. The masses of the gummy bears change because water is moving in or out of them. The water is in the gummy bear itself, and in all the solutions (tap water, distilled water, salt water, and cornstarch).
+            <br>
+            The <b>membrane</b> is what the water moves through. Membranes often seem solid, but they allow some things (but not all) to pass through them. This property is called being <i>semi-permeable</i>. The gelatin structure of a gummy bear is semi-permeable. The membranes that surround our cells are also semi-permeable. This experiment models how water moves in and out of our cells and keeps us alive.
+            <br>
+            <br>
+            <img src="/categories/biology/gummy-bear-osmosis/cell.png#" alt="Water moves through a cell membrane" style="width:30%;height:30%;">
+            <br>
+            <br>
+            <b>Low or high concentration</b> refers to the solutions on either side of the membrane (in the gummy bear and outside of the gummy bear). A <i>solution</i> is a liquid mixture in which one thing is dissolved in another thing. For example, soda is a solution of sugar, flavoring, and carbon dioxide (the bubbles) dissolved in water. The things that are dissolved (sugar, flavoring, carbon dioxide) are called <i>solutes</i> and the thing that they are dissolved in (water) is called the <i>solvent</i>.
+            <br>
+            <br>
+            <img src="/categories/biology/gummy-bear-osmosis/soda.png#" alt="A solution of soda" style="width:30%;height:30%;">
+            <br>
+            <br>
+            Gummy bears are technically solutions where a lot of sugar is dissolved in a little bit of water. Let’s look at the gummy bear in tap water. The solution inside the gummy bear has a higher concentration: there is a lot of solute (sugar) and not much solvent (water). But outside the gummy bear, the tap water solution has a very low concentration. It is mostly solvent (water) and a little bit of solute (minerals in the tap water). 
+            <br>
+            <br>
+            <img src="/categories/biology/gummy-bear-osmosis/tapwater.png#" alt="Tap water has a lower concentration than the gummy bear" style="width:30%;height:30%;">
+            <br>
+            <br>
+            Water, the solvent in both cases, wants to <b>even things out</b>. So it moves from the area of low concentration (the tap water) to the area of high concentration (the gummy bear). You’ll probably see the gummy bear grow as a result. The gummy bear absorbs water and expands until the concentrations are more equal.
+            <br>
+            <br>
+            <img src="/categories/biology/gummy-bear-osmosis/movement.png#" alt="Water moves from low to high concentration and the gummy bear expands" style="width:30%;height:30%;">
+            <br>
+            <br>
+            If you used distilled water, the gummy bear probably grew even more. Distilled water doesn’t have a lot of the minerals that tap water has, so it is even lower concentration. Even more water would move into the gummy bear.
+            <br>
+            If you used corn syrup and salt water, the gummy bear probably didn’t grow as much or it might have shrunk. Corn syrup (sugar dissolved in water) and salt water (salt dissolved in water) are both very high concentration solutions. Water might have left the gummy bear (the lower concentration in this case) and caused it to shrink.
+            <br>
+            <br>
+            <img src="/categories/biology/gummy-bear-osmosis/saltwater.png#" alt="Salt water has a lower concentration than the gummy bear" style="width:30%;height:30%;">
+            <img src="/categories/biology/gummy-bear-osmosis/saltwaterpic.png#" alt="Gummy bear in salt water" style="width:30%;height:30%;">
+          </p>
+          <br>
+        </div>
+      </div>
+
+    <div class="footer">
+        <h2><h3>&copy; Copyright 2020, In Lieu of a Lab</h3></h2>
+      </div>
+
+</body>
+</html>
