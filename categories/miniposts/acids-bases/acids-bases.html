@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>In Lieu of A Lab</title>
+<link rel="icon" href="/images/icon.png" type="image/png" sizes="16x16">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face {
+  font-family: OxygenR;
+  src: url("/fonts/Oxygen/Oxygen-Regular.ttf#");
+}
+@font-face {
+  font-family: OxygenB;
+  src: url("/fonts/Oxygen/Oxygen-Bold.ttf#");
+}
+@font-face {
+  font-family: QuicksandR;
+  src: url("/fonts/Quicksand/static/Quicksand-Regular.ttf#");
+}
+@font-face {
+  font-family: QuicksandM;
+  src: url("/fonts/Quicksand/static/Quicksand-Medium.ttf#");
+}
+@font-face {
+  font-family: QuicksandS;
+  src: url("/fonts/Quicksand/static/Quicksand-SemiBold.ttf#");
+}
+
+body {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+.header {
+  padding: 30px; /* some padding */
+  text-align: center; /* center the text */
+  background: #14d41d7c; /* green background */
+  background-size: cover;
+  position: relative;
+}
+
+.header:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url('/images/header_background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+  font-size: 40px;
+  color: #333;
+  font-weight: 900;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+  z-index: 2;
+  position: relative;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background-color: #333; /* Dark background color */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: rgb(58, 150, 255); /* Grey background color */
+  color: black; /* Black text color */
+}
+
+/* Ensure proper sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Main column */
+.main { 
+  background-color: white; /* White background color */
+  padding: 20px; /* Some padding */
+}
+
+.main h2 {
+  font-size: 30px;
+  color: rgb(58, 150, 255);
+  font-weight: 900;
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+.main h3 {
+  font-family: QuicksandS, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.main h4 {
+  font-family: QuicksandR, Helvetica, sans-serif;
+  font-style: italic;
+}
+
+.main h5 {
+  font-size: 15px;
+  color: #333;
+  font-weight: 700;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+}
+
+.main h6 {
+  font-size: 16px;
+  color: rgb(211, 0, 0);
+  font-weight: 900;
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+.main p {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+.main li {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row { 
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background: #ddd; /* Grey background */
+  
+}
+
+.footer h3 {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #14d41d7c;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #19ee24;
+  color: #333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  /*-webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s*/
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bold {
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+</style>
+
+<script>
+  // When the user clicks on <div>, open the popup
+  function popup1f() {
+    var popup = document.getElementById("popup1");
+    popup.classList.toggle("show");
+  }
+  function popup2f() {
+    var popup = document.getElementById("popup2");
+    popup.classList.toggle("show");
+  }
+  function popup3f() {
+    var popup = document.getElementById("popup3");
+    popup.classList.toggle("show");
+  }
+  function popup4f() {
+    var popup = document.getElementById("popup4");
+    popup.classList.toggle("show");
+  }
+  function popup5f() {
+    var popup = document.getElementById("popup5");
+    popup.classList.toggle("show");
+  }
+  function popup6f() {
+    var popup = document.getElementById("popup6");
+    popup.classList.toggle("show");
+  }
+  </script>
+
+</head>
+<body>
+
+    <div class="header">
+        <h1>In Lieu of A Lab</h1>
+      </div>
+
+    <div class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/categories/biology/biology.html">Biology</a>
+        <a href="/categories/chemistry/chemistry.html">Chemistry</a>
+        <a href="/categories/geoscience/geoscience.html">Geoscience</a>
+        <strong><a href="/categories/miniposts/miniposts.html">Miniposts</a></strong>
+        <a href="/categories/blog/blog.html">Blog</a>
+        <a href="/categories/toolbox/toolbox.html">Toolbox</a>
+        <a href="/categories/citsci/citsci.html">Citizen Science</a>
+        <a href="/categories/resources/resources.html">Resources</a>
+        <a href="/about.html" class="right">About</a>
+      </div>
+
+    <div class="row">
+        <div class="main">
+          <h2>Acids, Bases, and the pH Scale</h2>
+          <h5>2020-07-20</h5>
+          <br>
+          <h4>What makes something acidic or basic? How is acidity measured?</h4>
+          <br>
+
+          <h3>Acids and bases</h3>
+          <br>
+          <p>Chemical substances can be classified as being an <span class="bold">acid</span>acid or a <span class="bold">base</span>.
+            <br>
+            Here are some of the physical differences between acids and bases:
+            <img src="/categories/miniposts/acids-bases/physdiff.png#" alt="Physical differences between acids and bases" style="width:50%;height:50%;" class="center">
+            <br>
+            Even though acids have a scarier reputation, both acids and bases can be harmful to us. Both acids and bases can also be completely safe. We drink acidic lemonade and sparkling water all the time, and clean ourselves with basic soap. It’s very important to <i>always take safety measures</i> (gloves, goggles, etc.) when handling unknown acids and bases, but there’s no need to fear either one.
+            <br>
+            Chemically, an acid <i>produces</i> H+ ions in a solution, while a base <i>takes</i> H+ ions in a solution.
+            <span class="popup" onclick="popup1f()"><sup><b>&#9650;</b></sup>
+              <span class="popuptext" id="popup1">An H+ ion is a positively charged atom of hydrogen. See the minipost <a href="/categories/miniposts/smallest-particles/smallest-particles.html"><u>The Smallest Particles</u></a> for more information.</span>
+            </span>
+            <br>
+            <img src="/categories/miniposts/acids-bases/acidsbases.png#" alt="Acids produce hydrogen, bases take hydrogen" style="width:50%;height:50%;" class="center">
+            <br>
+          </p>
+
+          <h3>Measuring acidity/basicity</h3>
+          <br>
+          <p>
+            A measurement called pH determines how <span class="bold">acidic</span> or <span class="bold">basic</span> a substance is. pH is a scale from 0-14, with 0-6 being acidic, 7 being neutral, and 8-14 being basic (also called <span class="bold">alkaline</span>). 
+            <br>
+            <img src="/categories/miniposts/acids-bases/pHScale.png#" alt="The pH scale" style="width:50%;height:50%;" class="center">
+            <br>
+            <i>Image credit: scienceabc.com</i>
+            <br>
+            Depending on who you ask, pH can stand for “potential hydrogen,” “per hydronium,” or “power of hydrogen.” Basically, the lower the number, the more hydrogen is produced, and the more acidic it is.
+            <span class="popup" onclick="popup2f()"><sup><b>&#9650;</b></sup>
+              <span class="popuptext" id="popup2">See pH Math section below for a more complete description of what the number represents.</span>
+            </span>
+            Certain substances are called <span class="bold">pH indicators</span>. One you can make at home is a <a href="/categories/toolbox/cabbage-indicator/cabbage-indicator.html"><u>cabbage juice indicator</u></a>. Cabbages (and most purple-ish produce) have a pigment called <span class="bold">anthocyanin</span> in them that changes color with pH.
+            <br>
+            <img src="/categories/miniposts/acids-bases/chemdiff.png#" alt="Chemical differences between acids and bases" style="width:50%;height:50%;" class="center">
+            <br>
+          </p>
+
+          <h3>Is water acidic or basic?</h3>
+          <br>
+          <p>
+            Water, being the incredible anomaly that it is, is both an acid and a base. The H<sup>+</sup> and OH<sup>-</sup> in H<sub>2</sub>O are constantly separating and coming back together, which means it is both producing H<sup>+</sup> and taking H<sup>+</sup>. Thus, it fits both definitions.
+            <br>
+            <img src="/categories/miniposts/acids-bases/waterequillibrium.png#" alt="Water is both an acid and a base" style="width:50%;height:50%;" class="center">
+            <br>
+            <img src="/categories/miniposts/acids-bases/watertable.png#" alt="On the pH scale, water is a neutral purple 7" style="width:50%;height:50%;" class="center">
+            <br>
+          </p>
+
+          <h3>Why pH matters</h3>
+          <br>
+          <p>
+            Acids and bases are everywhere. For example, we rely on stomach acid to digest our food and we use bases such as soap and ammonia to clean. pH levels are also very important when it comes to the environment.
+            <br>
+            Many ocean-dwelling creatures need their watery habitats to be at a certain pH level to survive. When burning fossil fuels releases CO2 into the atmosphere, carbonic acid (H2CO3) is formed. This acid can lower the pH of the ocean and harm marine organisms. Check out the Ocean Acidification Demo for more information and some hopeful solutions.
+            <br>
+          </p>
+
+          <h3>pH Math (for more advanced students)</h3>
+          <br>
+          <p>
+            The math for pH is a little more advanced (you probably need to be familiar with exponentials). pH is a logarithmic scale. A logarithm is the inverse of an exponential function.
+            <br>
+            Here’s one way to think about it: there is one (potential) H+ ion for every 10n molecules of the solution, where n is the pH value.
+            <br>
+            If there is a solution with a pH of 1, then for every 101 (10) molecules of solution, there is one hydrogen. That’s a lot of hydrogen, so the solution is very acidic.
+            <br>
+            On the flip side, if we have a solution with a pH of 14, you’ll only find a hydrogen ion every 1014 (100,000,000,000,000 or 100 trillion) molecules of solution. Hydrogen in this case is extremely hard to come by, so the solution is basic.
+            <br>
+          </p>
+
+        </div>
+      </div>
+
+    <div class="footer">
+        <h2><h3>&copy; Copyright 2020, In Lieu of a Lab</h3></h2>
+      </div>
+
+</body>
+</html>
