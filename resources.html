@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>In Lieu of A Lab</title>
+<link rel="icon" href="/images/icon.png" type="image/png" sizes="16x16">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face {
+  font-family: OxygenR;
+  src: url("/fonts/Oxygen/Oxygen-Regular.ttf#");
+}
+@font-face {
+  font-family: OxygenB;
+  src: url("/fonts/Oxygen/Oxygen-Bold.ttf#");
+}
+@font-face {
+  font-family: QuicksandR;
+  src: url("/fonts/Quicksand/static/Quicksand-Regular.ttf#");
+}
+@font-face {
+  font-family: QuicksandM;
+  src: url("/fonts/Quicksand/static/Quicksand-Medium.ttf#");
+}
+@font-face {
+  font-family: QuicksandS;
+  src: url("/fonts/Quicksand/static/Quicksand-SemiBold.ttf#");
+}
+
+body {
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
+}
+.header {
+  padding: 30px; /* some padding */
+  text-align: center; /* center the text */
+  background: #14d41d7c; /* green background */
+  background-size: cover;
+  position: relative;
+}
+
+.header:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.4;
+  background-image: url('/images/header_background.jpg');
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+/* Increase the font size of the <h1> element */
+.header h1 {
+  font-size: 40px;
+  color: #333;
+  font-weight: 900;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+  z-index: 2;
+  position: relative;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden; /* Hide overflow */
+  background-color: #333; /* Dark background color */
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left; /* Make sure that the links stay side-by-side */
+  display: block; /* Change the display to block, for responsive reasons (see below) */
+  color: white; /* White text color */
+  text-align: center; /* Center the text */
+  padding: 14px 20px; /* Add some padding */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right; /* Float a link to the right */
+}
+
+/* Change color on hover/mouse-over */
+.navbar a:hover {
+  background-color: rgb(58, 150, 255); /* Grey background color */
+  color: black; /* Black text color */
+}
+
+/* Ensure proper sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Column container */
+.row { 
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  flex: 30%; /* Set the width of the sidebar */
+  background-color: #f1f1f1; /* Grey background color */
+  padding: 20px; /* Some padding */
+  font-family: OxygenR, 'Trebuchet MS', sans-serif;
+}
+
+/* Main column */
+.main { 
+  flex: 70%; /* Set the width of the main content */
+  background-color: white; /* White background color */
+  padding: 20px; /* Some padding */
+}
+
+.main a {
+  text-decoration: none; /* Remove underline */
+}
+
+.main a:visited {
+  text-decoration:none;
+  color: rgb(58, 150, 255); 
+}
+
+.main a:hover {
+  color: #333; 
+}
+
+.main h2 {
+  font-size: 30px;
+  color: rgb(58, 150, 255);
+  font-weight: 900;
+  font-family: OxygenR, 'Open Sans', sans-serif;
+}
+
+.main h3 {
+  font-family: QuicksandS, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.main h4 {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+.main h5 {
+  font-size: 15px;
+  color: #333;
+  font-weight: 700;
+  font-family: OxygenB, 'Open Sans', sans-serif;
+}
+
+.main h6 {
+  font-size: 16px;
+  color: rgb(211, 0, 0);
+  font-weight: 900;
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+.main p {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+.main li {
+  font-family: QuicksandR, Helvetica, sans-serif;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row { 
+    flex-direction: column;
+  }
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.footer {
+  padding: 20px; /* Some padding */
+  text-align: center; /* Center text*/
+  background: #ddd; /* Grey background */
+  
+}
+
+.footer h3 {
+  font-family: OxygenR, 'Open Sans', sans-serif;
+  font-size: 15px;
+  color: #333;
+}
+
+/* Popup container */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: #14d41d7c;
+}
+
+/* The actual popup (appears on top) */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #19ee24;
+  color: #333;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+  visibility: visible;
+  /*-webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s*/
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;} 
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bold {
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+.link {
+  color: rgb(58, 150, 255);
+  font-family: QuicksandS, Helvetica, sans-serif;
+}
+
+</style>
+
+<script>
+  // When the user clicks on <div>, open the popup
+  function popup1f() {
+    var popup = document.getElementById("popup1");
+    popup.classList.toggle("show");
+  }
+  </script>
+</style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>In Lieu of A Lab</h1>
+      </div>
+
+    <div class="navbar">
+        <a href="/index.html">Home</a>
+        <a href="/categories/biology/biology.html">Biology</a>
+        <a href="/categories/chemistry/chemistry.html">Chemistry</a>
+        <a href="/categories/geoscience/geoscience.html">Geoscience</a>
+        <a href="/categories/miniposts/miniposts.html">Miniposts</a>
+        <a href="/categories/blog/blog.html">Blog</a>
+        <a href="/categories/toolbox/toolbox.html">Toolbox</a>
+        <a href="/categories/citsci/citsci.html">Citizen Science</a>
+        <strong><a href="#">Resources</a></strong>
+        <a href="/about.html" class="right">About</a>
+      </div>
+
+    <div class="row">
+        <div class="side">...</div>
+        <div class="main">
+          <h2>Resource Page</h2>
+          <br>
+          <p>
+            A collection of awesome science/education resources for further learning. Want to use what you’ve learned to be a student scientist? Check out the separate <a href="/categories/citsci/citsci.html" class="link">Citizen Science</a> resource page.
+          </p>
+        </div>
+      </div>
+
+    <div class="footer">
+        <h2><h3>&copy; Copyright 2020, In Lieu of a Lab</h3></h2>
+      </div>
+
+</body>
+</html>
